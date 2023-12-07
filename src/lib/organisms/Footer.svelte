@@ -1,0 +1,230 @@
+<script>
+  import { onMount } from "svelte";
+
+  onMount(() => {
+
+console.log("Hello World");
+
+var canvas = document.getElementById("canvas");
+var c = canvas.getContext("2d");
+var tx = window.innerWidth;
+var ty = window.innerHeight;
+canvas.width = tx;
+canvas.height = ty;
+
+var mousex = 0;
+var mousey = 0;
+
+addEventListener("mousemove", function() {
+  mousex = event.clientX;
+  mousey = event.clientY;
+});
+
+var grav = 0.99;
+
+function pinkColor() {
+  return "rgba(255, 192, 203, 0.6)"; // Roze kleur met 60% transparantie
+}
+
+function Ball() {
+  this.color = pinkColor();
+  this.radius = Math.random() * 20 + 14;
+  this.startradius = this.radius;
+  this.x = Math.random() * (tx - this.radius * 2) + this.radius;
+  this.y = Math.random() * (ty - this.radius);
+  this.dy = Math.random() * 2;
+  this.dx = Math.round((Math.random() - 0.5) * 10);
+  this.vel = Math.random() / 5;
+  this.update = function() {
+    c.beginPath();
+    c.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+    c.fillStyle = this.color;
+    c.fill();
+  };
+}
+
+var bal = [];
+for (var i = 0; i < 50; i++) {
+  bal.push(new Ball());
+}
+
+function animate() {
+  if (tx != window.innerWidth || ty != window.innerHeight) {
+    tx = window.innerWidth;
+    ty = window.innerHeight;
+    canvas.width = tx;
+    canvas.height = ty;
+  }
+  requestAnimationFrame(animate);
+  c.clearRect(0, 0, tx, ty);
+  for (var i = 0; i < bal.length; i++) {
+    bal[i].update();
+    bal[i].y += bal[i].dy;
+    bal[i].x += bal[i].dx;
+    if (bal[i].y + bal[i].radius >= ty) {
+      bal[i].dy = -bal[i].dy * grav;
+    } else {
+      bal[i].dy += bal[i].vel;
+    }
+    if (bal[i].x + bal[i].radius > tx || bal[i].x - bal[i].radius < 0) {
+      bal[i].dx = -bal[i].dx;
+    }
+    if (
+      mousex > bal[i].x - 20 &&
+      mousex < bal[i].x + 20 &&
+      mousey > bal[i].y - 50 &&
+      mousey < bal[i].y + 50 &&
+      bal[i].radius < 70
+    ) {
+      bal[i].radius += 5;
+    } else {
+      if (bal[i].radius > bal[i].startradius) {
+        bal[i].radius += -5;
+      }
+    }
+  }
+}
+
+animate();
+
+setInterval(function() {
+  bal.push(new Ball());
+  bal.splice(0, 1);
+}, 400);
+
+  });
+
+export let data
+console.log (data)
+</script>
+
+
+<canvas id="canvas"></canvas>
+<section class="container">
+  <article>
+    <h2>SPATwater</h2>
+    <h3>Een nieuwe generatie hydrologen</h3>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="44"
+      height="44"
+      viewBox="0 0 44 44"
+      fill="none"
+    >
+      <path
+        d="M33.6163 33.6215H28.7296V25.964C28.7296 24.138 28.6926 21.7882 26.1831 21.7882C23.6353 21.7882 23.2461 23.7752 23.2461 25.8293V33.6215H18.3593V17.875H23.0536V20.0213H23.1168C23.7728 18.7838 25.3678 17.4776 27.7506 17.4776C32.7021 17.4776 33.6178 20.7365 33.6178 24.9783L33.6163 33.6215ZM12.8401 15.7204C11.2671 15.7204 10.0035 14.4471 10.0035 12.881C10.0035 11.3163 11.2685 10.0444 12.8401 10.0444C14.4076 10.0444 15.6781 11.3163 15.6781 12.881C15.6781 14.4471 14.4063 15.7204 12.8401 15.7204ZM15.2904 33.6215H10.3899V17.875H15.2904V33.6215ZM36.0611 5.5H7.93689C6.59077 5.5 5.50177 6.56425 5.50177 7.87738V36.1227C5.50177 37.437 6.59077 38.5 7.93689 38.5H36.0571C37.4018 38.5 38.5018 37.437 38.5018 36.1227V7.87738C38.5018 6.56425 37.4018 5.5 36.0571 5.5H36.0611Z"
+        fill="white"
+      />
+    </svg>
+  </article>
+
+
+  <article>
+    <h2>Over</h2>
+    <ul>
+      <li><a href="#over">Over ons</a></li>
+      <li><a href="#klimaatadaptatie">Klimaatadaptatie</a></li>
+      <li><a href="#waterkwaliteit">Waterkwaliteit</a></li>
+      <li><a href="#brain">b-RAIN</a></li>
+      <li><a href="#projecten">Projecten</a></li>
+      <li><a href="#kennisbank">Kennisbank</a></li>
+    </ul>
+  </article>
+
+  <article>
+    <h2>Bedrijf</h2>
+    <ul>
+      <li><a href="#team">Team</a></li>
+    </ul>
+  </article>
+
+  <article>
+    <h2>Contact</h2>
+    <ul>
+      <li><a href="#contact">Neem contact op</a></li>
+    </ul>
+  </article>
+
+</section>
+
+
+<style>
+
+body {
+    margin: 0px;
+    overflow: hidden;
+}
+
+#canvas{
+    margin-bottom: -30em;
+    margin-top: -25em;
+}
+
+  h2 {
+    color: white;
+    font-size: 1.3rem;
+    padding-bottom: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  h3 {
+    color: white;
+    font-size: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  svg {
+    width: 1.7rem;
+    margin-top: 0.5rem;
+    margin-left: -0.3em;
+  }
+
+  ul {
+    list-style-type: none;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  li,
+  a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    padding-bottom: .5rem;
+    font-size: .9rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    z-index: 1;
+  }
+
+  section {
+    height: 100vh;
+    background-image: url("assets/curved-footer.png");
+
+  }
+
+  .container {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+padding-top: 6em;
+    padding-bottom: 24em;
+  }
+
+  @media screen and (min-width: 720px) {
+    h2 {
+      margin-bottom: 1.5rem;
+      margin-top: 2rem;
+    }
+    section {
+      height: 50vh;
+    }
+    .container {
+      flex-direction: row;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+</style>
