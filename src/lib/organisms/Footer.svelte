@@ -150,6 +150,8 @@ console.log (data)
 
 <style>
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:&display=swap');
+
 body {
     margin: 0px;
     overflow: hidden;
@@ -160,12 +162,39 @@ body {
     margin-top: -25em;
 }
 
-  h2 {
+  h2{
     color: white;
     font-size: 1.3rem;
     padding-bottom: 1rem;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Montserrat', sans-serif;
+
+  animation-duration: 1000ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-name: font-animation;
+  
+}
+
+@keyframes font-animation {
+  0% {
+    font-variation-settings: 'wght' 100,
+                             'ROND' 1;
   }
+  100% {
+    font-variation-settings: 'wght' 1000,
+                             'ROND' 100;
+  }
+}
+
+/* @Keyframes font-animation {
+0% {
+font-variation-settings: "wght" 100;
+}
+100% {
+font-variation-settings: "wght" 900;
+}
+} */
 
   h3 {
     color: white;
