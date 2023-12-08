@@ -119,11 +119,11 @@
     }
 
     animate();
-//  Deze intervalfunctie voegt elke 400 milliseconden een nieuwe bal toe aan de bal-array en verwijdert tegelijkertijd de oudste bal uit de array. Het resultaat is dat er elke 400 milliseconden een nieuwe bal wordt gecreëerd, en na verloop van tijd zal het aantal ballen in de array constant blijven, omdat er één wordt toegevoegd en één wordt verwijderd.
+    //  Deze intervalfunctie voegt elke 400 milliseconden een nieuwe bal toe aan de bal-array en verwijdert tegelijkertijd de oudste bal uit de array. Het resultaat is dat er elke 400 milliseconden een nieuwe bal wordt gecreëerd, en na verloop van tijd zal het aantal ballen in de array constant blijven, omdat er één wordt toegevoegd en één wordt verwijderd.
     setInterval(function () {
-// Voegt een nieuwe bal toe aan het einde van de bal-array door een nieuw Ball-object te maken met behulp van de constructorfunctie Ball() en het toe te voegen aan het einde van de array met push.
+      // Voegt een nieuwe bal toe aan het einde van de bal-array door een nieuw Ball-object te maken met behulp van de constructorfunctie Ball() en het toe te voegen aan het einde van de array met push.
       bal.push(new Ball());
-// Verwijdert het eerste element uit de bal-array (index 0) met behulp van splice. Hierdoor blijft het aantal ballen in de array constant, wat een visueel effect creëert waarbij het lijkt alsof nieuwe ballen continu worden gegenereerd en de oudste ballen verdwijnen.
+      // Verwijdert het eerste element uit de bal-array (index 0) met behulp van splice. Hierdoor blijft het aantal ballen in de array constant, wat een visueel effect creëert waarbij het lijkt alsof nieuwe ballen continu worden gegenereerd en de oudste ballen verdwijnen.
       bal.splice(0, 1);
     }, 400);
   });
@@ -257,7 +257,8 @@ font-variation-settings: "wght" 900;
 
   section {
     height: 100vh;
-    background-image: url("assets/curved-footer.png");
+    /* background-color: var(--darkblue); */
+    background-image: url("./assets/curved-footer.png");
   }
 
   .container {
