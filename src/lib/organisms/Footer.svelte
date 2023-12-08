@@ -2,102 +2,135 @@
   import { onMount } from "svelte";
 
   onMount(() => {
+    console.log("Hello World");
 
-console.log("Hello World");
-
-var canvas = document.getElementById("canvas");
-var c = canvas.getContext("2d");
-var tx = window.innerWidth;
-var ty = window.innerHeight;
-canvas.width = tx;
-canvas.height = ty;
-
-var mousex = 0;
-var mousey = 0;
-
-addEventListener("mousemove", function() {
-  mousex = event.clientX;
-  mousey = event.clientY;
-});
-
-var grav = 0.99;
-
-function pinkColor() {
-  return "rgba(255, 192, 203, 0.6)"; // Roze kleur met 60% transparantie
-}
-
-function Ball() {
-  this.color = pinkColor();
-  this.radius = Math.random() * 20 + 14;
-  this.startradius = this.radius;
-  this.x = Math.random() * (tx - this.radius * 2) + this.radius;
-  this.y = Math.random() * (ty - this.radius);
-  this.dy = Math.random() * 2;
-  this.dx = Math.round((Math.random() - 0.5) * 10);
-  this.vel = Math.random() / 5;
-  this.update = function() {
-    c.beginPath();
-    c.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-    c.fillStyle = this.color;
-    c.fill();
-  };
-}
-
-var bal = [];
-for (var i = 0; i < 50; i++) {
-  bal.push(new Ball());
-}
-
-function animate() {
-  if (tx != window.innerWidth || ty != window.innerHeight) {
-    tx = window.innerWidth;
-    ty = window.innerHeight;
+    // Canvas id word aangesproken
+    var canvas = document.getElementById("canvas");
+    //  Hier wordt de 2D-context van het canvas verkregen en toegewezen aan de variabele c. Deze context wordt vaak gebruikt voor het tekenen van grafische elementen op het canvas.
+    var c = canvas.getContext("2d");
+    // Breedte van het canvcas geef je een variabele
+    var tx = window.innerWidth;
+    // Hoogte van het canvas geef je een variabele
+    var ty = window.innerHeight;
     canvas.width = tx;
     canvas.height = ty;
-  }
-  requestAnimationFrame(animate);
-  c.clearRect(0, 0, tx, ty);
-  for (var i = 0; i < bal.length; i++) {
-    bal[i].update();
-    bal[i].y += bal[i].dy;
-    bal[i].x += bal[i].dx;
-    if (bal[i].y + bal[i].radius >= ty) {
-      bal[i].dy = -bal[i].dy * grav;
-    } else {
-      bal[i].dy += bal[i].vel;
+
+    // Plek van de muis word gevolgd
+    var mousex = 0;
+    var mousey = 0;
+
+    addEventListener("mousemove", function () {
+      mousex = event.clientX;
+      mousey = event.clientY;
+    });
+
+    // "zwaartekracht"
+    var grav = 0.99;
+
+    // Roze kleur word ingesteld
+    function pinkColor() {
+      return "rgba(255, 192, 203, 0.6)"; // Roze kleur met 60% transparantie (0.6)
     }
-    if (bal[i].x + bal[i].radius > tx || bal[i].x - bal[i].radius < 0) {
-      bal[i].dx = -bal[i].dx;
+
+    // Er word een functie aangemaakt voor het ball element
+    function Ball() {
+      // De roze kleur word aangesproken die we eerder hebben ingesteld
+      this.color = pinkColor();
+      // De radius wordt ingesteld op een willekeurige waarde tussen 14 en 34 (20 + 14), waardoor de straal van de bal varieert.
+      this.radius = Math.random() * 20 + 14;
+      // Hier wordt startradius ingesteld op dezelfde waarde als radius op het moment dat hij word aangemaakt. Dit lijkt te worden gebruikt om de oorspronkelijke straal van de bal te onthouden.
+      this.startradius = this.radius;
+      //  De x-positie (this.x) wordt willekeurig ingesteld binnen het canvas, rekening houdend met de grootte van de bal.
+      this.x = Math.random() * (tx - this.radius * 2) + this.radius;
+      // Dit hetzelfde als voor de x-positie
+      this.y = Math.random() * (ty - this.radius);
+      // De dy (delta-y) eigenschap wordt ingesteld op een willekeurige waarde tussen 0 en 2, wat de verticale snelheid van de bal voorstelt.
+      this.dy = Math.random() * 2;
+      //  De dx (delta-x) eigenschap wordt ingesteld op een willekeurige waarde tussen -5 en 5, de horizontale snelheid van de bal.
+      this.dx = Math.round((Math.random() - 0.5) * 10);
+      // De vel (snelheid) eigenschap wordt ingesteld op een willekeurige waarde tussen 0 en 0.2. Dit is de snelheid van de bal.
+      this.vel = Math.random() / 5;
+      // Een methode genaamd update wordt gedefinieerd op het balobject. Deze methode wordt gebruikt om de weergave van de bal bij te werken op basis van zijn huidige eigenschappen.
+      this.update = function () {
+        // Bal word getekend met de waardes die we hierboven hebben ingesteld
+        c.beginPath();
+        c.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+        c.fillStyle = this.color;
+        c.fill();
+      };
     }
-    if (
-      mousex > bal[i].x - 20 &&
-      mousex < bal[i].x + 20 &&
-      mousey > bal[i].y - 50 &&
-      mousey < bal[i].y + 50 &&
-      bal[i].radius < 70
-    ) {
-      bal[i].radius += 5;
-    } else {
-      if (bal[i].radius > bal[i].startradius) {
-        bal[i].radius += -5;
+
+    // Hier wordt een lege array genaamd bal gedeclareerd. Deze array zal worden gebruikt om de balobjecten op te slaan.
+    var bal = [];
+    // Dit is een for-lus die 50 keer wordt doorlopen. De lus heeft een teller i die begint bij 0 en wordt verhoogd met 1 bij elke iteratie. De lus zal doorgaan zolang i kleiner is dan 50.
+    for (var i = 0; i < 50; i++) {
+      // Binnen de lus wordt een nieuwe instantie van het Ball object gemaakt met behulp van de constructorfunctie Ball(). Deze nieuwe instantie wordt vervolgens toegevoegd aan de array bal met behulp van de push-methode
+      bal.push(new Ball());
+    }
+
+    // Deze functie word gebruikt om een animatie te maken op basis van de eerder gedefinieerde ballen en hun gedrag.
+    function animate() {
+      if (tx != window.innerWidth || ty != window.innerHeight) {
+        tx = window.innerWidth;
+        ty = window.innerHeight;
+        canvas.width = tx;
+        canvas.height = ty;
+      }
+      // Deze blok code controleert of de breedte (tx) of hoogte (ty) van het venster zijn gewijzigd sinds de laatste frame. Als dat het geval is, worden de variabelen tx en ty bijgewerkt met de actuele breedte en hoogte van het venster, en het canvas wordt opnieuw ingesteld op deze nieuwe grootte.
+
+      // Dit vraagt de browser aan om de functie animate opnieuw aan te roepen voordat de volgende repaint plaatsvindt. Hiermee wordt een soepele animatieloop gemaakt.
+      requestAnimationFrame(animate);
+      // Dit zorgt ervoor dat het canvas aan het begin van elk frame wordt gewist om de oude posities van de ballen te verwijderen voordat de bijgewerkte posities worden getekend.
+      c.clearRect(0, 0, tx, ty);
+      // Deze for-lus itereert over alle ballen in de array bal en voert een reeks bewerkingen uit op elk balobject.
+      for (var i = 0; i < bal.length; i++) {
+        // Dit roept de update-methode aan voor het huidige balobject. Deze methode was eerder gedefinieerd in de Ball constructor en is verantwoordelijk voor het tekenen van de bal op het canvas.
+        bal[i].update();
+        // Hier worden de x- en y-posities van elk balobject bijgewerkt op basis van hun snelheid (dy en dx).
+        bal[i].y += bal[i].dy;
+        bal[i].x += bal[i].dx;
+        // Dit deel controleert of de bal de onderkant van het canvas heeft bereikt. Als dat het geval is, wordt de verticale snelheid (dy) omgekeerd (vermenigvuldigd met -1) en vermenigvuldigd met de zwaartekrachtconstante (grav).
+        if (bal[i].y + bal[i].radius >= ty) {
+          bal[i].dy = -bal[i].dy * grav;
+        }
+        // Als de bal nog niet de onderkant heeft bereikt, wordt de verticale snelheid verhoogd met de snelheid (vel) van de bal.
+        else {
+          bal[i].dy += bal[i].vel;
+        }
+        // Hier wordt gecontroleerd of de bal de rechter- of linkergrens van het canvas heeft bereikt. Als dat het geval is, wordt de horizontale snelheid (dx) omgekeerd (vermenigvuldigd met -1).
+        if (bal[i].x + bal[i].radius > tx || bal[i].x - bal[i].radius < 0) {
+          bal[i].dx = -bal[i].dx;
+        }
+        // Hier wordt gecontroleerd of de muis zich binnen een bepaald gebied rondom een bal bevindt (mousex en mousey worden gebruikt om de muispositie bij te houden). Als dat het geval is en de straal van de bal is kleiner dan 70, wordt de straal van de bal met 5 verhoogd. Anders, als de straal groter is dan de oorspronkelijke straal, wordt de straal met 5 verminderd. Dit creëert een interactie waarbij ballen groter worden als de muis zich in de buurt bevindt, en kleiner als dat niet het geval is.
+        if (
+          mousex > bal[i].x - 20 &&
+          mousex < bal[i].x + 20 &&
+          mousey > bal[i].y - 50 &&
+          mousey < bal[i].y + 50 &&
+          bal[i].radius < 70
+        ) {
+          bal[i].radius += 5;
+        } else {
+          if (bal[i].radius > bal[i].startradius) {
+            bal[i].radius += -5;
+          }
+        }
       }
     }
-  }
-}
 
-animate();
-
-setInterval(function() {
-  bal.push(new Ball());
-  bal.splice(0, 1);
-}, 400);
-
+    animate();
+//  Deze intervalfunctie voegt elke 400 milliseconden een nieuwe bal toe aan de bal-array en verwijdert tegelijkertijd de oudste bal uit de array. Het resultaat is dat er elke 400 milliseconden een nieuwe bal wordt gecreëerd, en na verloop van tijd zal het aantal ballen in de array constant blijven, omdat er één wordt toegevoegd en één wordt verwijderd.
+    setInterval(function () {
+// Voegt een nieuwe bal toe aan het einde van de bal-array door een nieuw Ball-object te maken met behulp van de constructorfunctie Ball() en het toe te voegen aan het einde van de array met push.
+      bal.push(new Ball());
+// Verwijdert het eerste element uit de bal-array (index 0) met behulp van splice. Hierdoor blijft het aantal ballen in de array constant, wat een visueel effect creëert waarbij het lijkt alsof nieuwe ballen continu worden gegenereerd en de oudste ballen verdwijnen.
+      bal.splice(0, 1);
+    }, 400);
   });
 
-export let data
-console.log (data)
+  export let data;
+  console.log(data);
 </script>
-
 
 <canvas id="canvas"></canvas>
 <section class="container">
@@ -117,7 +150,6 @@ console.log (data)
       />
     </svg>
   </article>
-
 
   <article>
     <h2>Over</h2>
@@ -144,50 +176,48 @@ console.log (data)
       <li><a href="#contact">Neem contact op</a></li>
     </ul>
   </article>
-
 </section>
 
-
 <style>
+  @import url("https://fonts.googleapis.com/css2?family=Montserrat:&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:&display=swap');
-
-body {
+  body {
     margin: 0px;
     overflow: hidden;
-}
+  }
 
-#canvas{
+  #canvas {
     margin-bottom: -30em;
     margin-top: -25em;
-}
+  }
 
-  h2{
+  h2 {
     color: white;
     font-size: 1.3rem;
     padding-bottom: 1rem;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
 
-  animation-duration: 1000ms;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  animation-name: font-animation;
-  
-}
-
-@keyframes font-animation {
-  0% {
-    font-variation-settings: 'wght' 100,
-                             'ROND' 1;
+    animation-duration: 1000ms;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-name: font-animation;
   }
-  100% {
-    font-variation-settings: 'wght' 1000,
-                             'ROND' 100;
-  }
-}
 
-/* @Keyframes font-animation {
+  @keyframes font-animation {
+    0% {
+      font-variation-settings:
+        "wght" 100,
+        "ROND" 1;
+    }
+    100% {
+      font-variation-settings:
+        "wght" 1000,
+        "ROND" 100;
+    }
+  }
+
+  /* @Keyframes font-animation {
 0% {
 font-variation-settings: "wght" 100;
 }
@@ -219,8 +249,8 @@ font-variation-settings: "wght" 900;
     text-decoration: none;
     color: white;
     cursor: pointer;
-    padding-bottom: .5rem;
-    font-size: .9rem;
+    padding-bottom: 0.5rem;
+    font-size: 0.9rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     z-index: 1;
   }
@@ -228,7 +258,6 @@ font-variation-settings: "wght" 900;
   section {
     height: 100vh;
     background-image: url("assets/curved-footer.png");
-
   }
 
   .container {
@@ -236,7 +265,7 @@ font-variation-settings: "wght" 900;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-padding-top: 6em;
+    padding-top: 6em;
     padding-bottom: 24em;
   }
 
