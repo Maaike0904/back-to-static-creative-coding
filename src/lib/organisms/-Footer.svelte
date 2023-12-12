@@ -160,6 +160,7 @@
       <li><a href="#brain">b-RAIN</a></li>
       <li><a href="#projecten">Projecten</a></li>
       <li><a href="#kennisbank">Kennisbank</a></li>
+      <li><a href="/Navigation">Navigatie</a></li>
     </ul>
   </article>
 
