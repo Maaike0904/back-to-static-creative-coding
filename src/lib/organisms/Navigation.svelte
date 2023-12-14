@@ -82,13 +82,53 @@
   }
 
   /* Hover animatie */
-  li a:hover {
+  li:hover {
     color: rgb(#fafafa);
     text-shadow:
       0 0 5px #abd8ef,
       0 0 25px #abd8ef,
       0 0 50px #abd8ef,
       0 0 100px #abd8ef;
+  }
+
+  li:nth-of-type(2n):hover {
+    text-shadow:
+      0 0 5px #76f59a,
+      0 0 25px #76f59a,
+      0 0 50px #76f59a,
+      0 0 100px #76f59a;
+  }
+
+  li:nth-of-type(3n):hover {
+    text-shadow:
+      0 0 5px #f6f45c,
+      0 0 25px #f6f45c,
+      0 0 50px #f6f45c,
+      0 0 100px #f6f45c;
+  }
+
+  li:nth-of-type(4n):hover {
+    text-shadow:
+      0 0 5px #f48d2c,
+      0 0 25px #f48d2c,
+      0 0 50px #f48d2c,
+      0 0 100px #f48d2c;
+  }
+
+  li:nth-of-type(5n):hover {
+    text-shadow:
+      0 0 5px #f42c2c,
+      0 0 25px #f42c2c,
+      0 0 50px #f42c2c,
+      0 0 100px #f42c2c;
+  }
+
+  li:nth-of-type(6n):hover {
+    text-shadow:
+      0 0 5px #f42cea,
+      0 0 25px #f42cea,
+      0 0 50px #f42cea,
+      0 0 100px #f42cea;
   }
 
   /* Mediaquery */
