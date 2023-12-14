@@ -143,16 +143,28 @@
       /* Vergroting van het balletje */
       transform: translate(-50%, -50%) scale(3);
       background: #abd8ef;
-      box-shadow: 0 0 0 100vh var(--spat);
+      box-shadow: 0 0 0 100vh #e8f0fe;
       color: #fafafa;
     }
 
     ul li:nth-of-type(2n):hover ~ .cursor {
-      /* Vergroting van het balletje */
-      transform: translate(-50%, -50%) scale(3);
-      background: var #76f59a;
-      box-shadow: 0 0 0 100vh var(--spat);
-      color: #fafafa;
+      background: #76f59a;
+    }
+
+    ul li:nth-of-type(3n):hover ~ .cursor {
+      background: #f6f45c;
+    }
+
+    ul li:nth-of-type(4n):hover ~ .cursor {
+      background: #f48d2c;
+    }
+
+    ul li:nth-of-type(5n):hover ~ .cursor {
+      background: #f42c2c;
+    }
+
+    ul li:nth-of-type(6n):hover ~ .cursor {
+      background: #f42cea;
     }
 
     nav li a {
@@ -173,7 +185,7 @@
       border-radius: 50%;
       pointer-events: none;
       transform: translate(-50%, -50%);
-      mix-blend-mode: multiply;
+      mix-blend-mode: darken;
     }
   }
 </style>
