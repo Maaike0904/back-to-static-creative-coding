@@ -31,20 +31,14 @@
 </nav>
 
 <style>
+  @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Poppins:wght@400;500;600&display=swap");
+
   :global(:has(.navbar-container)) {
     container-type: inline-size;
   }
 
-  /* Balletje  */
-  .cursor {
-    position: fixed;
-    width: 40px;
-    height: 40px;
-    background: #4ecd5d;
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    mix-blend-mode: difference;
+  * {
+    cursor: none;
   }
 
   /* Navigation */
@@ -112,6 +106,22 @@
     nav li a {
       padding: 35px 0px;
       font-size: 5rem;
+    }
+
+    li a:hover {
+      animation: none;
+    }
+
+    /* Balletje  */
+    .cursor {
+      position: fixed;
+      width: 40px;
+      height: 40px;
+      background: #4ecd5d;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: difference;
     }
   }
 </style>
