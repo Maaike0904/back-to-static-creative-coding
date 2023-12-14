@@ -85,10 +85,10 @@
   li:hover {
     color: rgb(#fafafa);
     text-shadow:
-      0 0 5px #abd8ef,
-      0 0 25px #abd8ef,
-      0 0 50px #abd8ef,
-      0 0 100px #abd8ef;
+      0 0 5px #096ea0,
+      0 0 25px #096ea0,
+      0 0 50px #096ea0,
+      0 0 100px #096ea0;
   }
 
   li:nth-of-type(2n):hover {
@@ -142,7 +142,15 @@
     ul li:hover ~ .cursor {
       /* Vergroting van het balletje */
       transform: translate(-50%, -50%) scale(3);
-      background: var(--green);
+      background: #abd8ef;
+      box-shadow: 0 0 0 100vh var(--spat);
+      color: #fafafa;
+    }
+
+    ul li:nth-of-type(2n):hover ~ .cursor {
+      /* Vergroting van het balletje */
+      transform: translate(-50%, -50%) scale(3);
+      background: var #76f59a;
       box-shadow: 0 0 0 100vh var(--spat);
       color: #fafafa;
     }
