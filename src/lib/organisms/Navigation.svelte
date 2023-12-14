@@ -121,24 +121,25 @@
       line-height: 10px;
     }
 
-    /* ul li:hover ~ .cursor {
+    ul li:hover ~ .cursor {
       transform: translate(-50%, -50%) scale(3);
       background: #3ecd5d;
-      box-shadow: 0 0 0 100vh #fff;
-      /* color: #fff; */
+      /* box-shadow: 0 0 0 100vh #abd8ef; */
+      color: #3ecd5d;
+    }
 
     nav li a {
       padding: 35px 0px;
       font-size: 5rem;
     }
 
-    /* 
     nav .menu {
       clear: none;
       float: right;
       height: auto; /* Adjusted to display the menu on desktop */
+    }
 
-    /* nav .menu-icon {
+    nav .menu-icon {
       display: none;
     }
 
@@ -155,6 +156,6 @@
       pointer-events: none;
       transform: translate(-50%, -50%);
       mix-blend-mode: difference;
-    } */
+    }
   }
 </style>
