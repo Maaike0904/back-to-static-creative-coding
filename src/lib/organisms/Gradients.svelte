@@ -42,6 +42,7 @@
 
   img {
     filter: blur(5px);
+    filter: grayscale(100%);
   }
 
   img:hover {
