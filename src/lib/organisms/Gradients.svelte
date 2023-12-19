@@ -43,6 +43,13 @@
     padding-top: 4em;
   }
 
+  img {
+    filter: blur(5px);
+  }
+
+  img:hover {
+    filter: none;
+  }
   /* body {
     min-height: 100vh;
     background: #212534;
@@ -74,6 +81,7 @@
   .card:hover {
     color: var(--spat);
     transition: color 1s;
+    filter: none;
   }
   .card:hover:before,
   .card:hover:after {
