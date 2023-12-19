@@ -6,18 +6,15 @@
 
 <main>
   <div class="card">
-    <!-- Wrapper voor de expertise cards -->
-    <div class="expertise__wrapper">
-      <!-- Klimaatadaptatie card -->
-      <div class="expertise__card">
-        <img
-          src="assets/Untitled4.png"
-          alt="Illustratie klimaatadaptatie voor een groenere wereld"
-          width="200px"
-          height="200px"
-        />
-        <h3>Klimaatadaptatie</h3>
-      </div>
+    <!-- Klimaatadaptatie card -->
+    <div class="expertise__card">
+      <img
+        src="assets/Untitled4.png"
+        alt="Illustratie klimaatadaptatie voor een groenere wereld"
+        width="200px"
+        height="200px"
+      />
+      <h3>Klimaatadaptatie</h3>
     </div>
   </div>
 </main>
