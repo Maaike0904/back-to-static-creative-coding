@@ -2,4 +2,5 @@
 
 // Organisms
 export { default as Footer } from "./organisms/-Footer.svelte";
-export { default as Navigation } from "./organisms/Navigation.svelte";
+export { default as Navigation } from "./organisms/-Navigation.svelte";
+export { default as Gradients } from "./organisms/Gradients.svelte";
