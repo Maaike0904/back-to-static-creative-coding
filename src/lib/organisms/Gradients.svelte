@@ -47,6 +47,7 @@
 
   img:hover {
     filter: none;
+    filter: drop-shadow(0px 0px 30px var(--green));
   }
   /* body {
     min-height: 100vh;
