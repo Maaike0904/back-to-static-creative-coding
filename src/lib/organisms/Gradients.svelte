@@ -42,7 +42,7 @@
 
   img {
     filter: blur(5px);
-    filter: grayscale(100%);
+    /* filter: grayscale(100%); */
   }
 
   img:hover {
@@ -75,12 +75,14 @@
     color: rgb(88 199 250 / 0%);
     cursor: pointer;
     font-family: cursive;
+    /* transition: all 0.2s ease-in-out; */
   }
 
   .card:hover {
     color: var(--spat);
     transition: color 1s;
     filter: none;
+    transform: scale(1, 1);
   }
   .card:hover:before,
   .card:hover:after {
@@ -125,8 +127,8 @@
       var(--darkblue)
     );
     opacity: 1;
-    transition: opacity 0.5s;
-    animation: spin 2.5s linear infinite;
+    transition: opacity 0.1s;
+    animation: spin 1.5s linear infinite;
   }
 
   @keyframes spin {
