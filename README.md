@@ -1,38 +1,9 @@
-# create-svelte
+# creative coding
+## Spike 1
+ <img width="1140" alt="Scherm­afbeelding 2024-01-28 om 21 18 55" src="https://github.com/Maaike0904/back-to-static-creative-coding/assets/112861144/782c9525-b8a2-488d-9ac9-fb8eaf1f5326">
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+## Spike 2
+<img width="1137" alt="Scherm­afbeelding 2024-01-28 om 21 19 12" src="https://github.com/Maaike0904/back-to-static-creative-coding/assets/112861144/417679fb-ba3d-481b-87c1-ade2af3165f8">
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## Spike 3
+<img width="1134" alt="Scherm­afbeelding 2024-01-28 om 21 18 39" src="https://github.com/Maaike0904/back-to-static-creative-coding/assets/112861144/309046e8-b627-4653-8cc8-75db1aea16a4">
